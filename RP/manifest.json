@@ -1,0 +1,44 @@
+{
+    "format_version": 2,
+    "header":{
+        "name": "GunAddon[R]",
+        "description": "リソース",
+        "uuid" : "017fa474-665c-4b92-b84d-02c424a8f917",
+        "version":[
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            19,
+            60
+        ]
+    },
+    "modules": [
+        {
+            "description": "module",
+            "type":"resources",
+            "uuid": "51145d0b-9fdb-498b-9b37-6e24f9b8dec0",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "uuid": "3de2ea8e-88da-4516-b84d-6fb02f52e204",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ],
+    "metadata": {
+        "authors": ["altivelis"],
+        "license":"紹介や改造などする場合は以下のダウンロードURLを記載してください。"
+    }
+}
