@@ -1,0 +1,90 @@
+{
+    "format_version": "1.18.0",
+    "minecraft:item": {
+      "description": {
+        "identifier": "altivelis:assult",
+        "category":"Equipment"
+      },
+      "components": {
+        "minecraft:display_name":{
+          "value":"アサルトライフル"
+        },
+        "minecraft:icon":{
+          "texture":"assult"
+        },
+        "minecraft:max_stack_size":1,
+        "minecraft:durability":{
+          "max_durability":25,
+          "damage_chance":{
+            "min":0,
+            "max":0
+          }
+        },
+        "minecraft:use_duration":0.05,
+        "minecraft:cooldown":{
+          "category":"assult",
+          "duration":0.2
+        },
+        "minecraft:on_use":{
+          "on_use":{
+            "event":"use",
+            "target":"self"
+          }
+        },
+        "minecraft:hand_equipped":true,
+        "minecraft:weapon":{}
+      },
+      "events":{
+        "use":{
+          "sequence":[
+            {
+              "condition":"query.remaining_durability>=1 && query.scoreboard('reloading')==0",
+              "trigger":{
+                "event":"shoot",
+                "target":"self"
+              }
+            },
+            {
+              "condition":"query.remaining_durability==0",
+              "trigger":{
+                "event":"reload",
+                "target":"self"
+              }
+            }
+          ]
+        },
+        "shoot":{
+          "sequence":[
+            {
+              "damage":{
+                "amount":1,
+                "type":"durability"
+              }
+            },
+            {
+              "shoot":{
+                "projectile":"altivelis:assult_bullet",
+                "launch_power":1.0
+              }
+            },
+            {
+              "run_command":{
+                "command":"camerashake add @s 1.5 0.1 positional",
+                "target":"holder"
+              }
+            }  
+          ]
+        },
+        "reload":{
+          "sequence":[
+            {
+              "run_command":{
+                "command":"playsound random.click @s ~~~ 1 0.8 1",
+                "target":"holder"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }

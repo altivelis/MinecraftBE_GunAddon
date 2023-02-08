@@ -1,0 +1,16 @@
+{
+    "format_version":"1.18.20",
+    "minecraft:entity":{
+        "description":{
+            "identifier":"minecraft:item",
+            "is_spawnable": false,
+            "is_summonable": false,
+            "is_experimental": false
+        },
+        "components":{
+            "minecraft:nameable":{
+                "always_show":true
+            }
+        }
+    }
+}
