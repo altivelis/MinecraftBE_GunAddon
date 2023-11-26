@@ -5,7 +5,44 @@
       "identifier": "minecraft:player",
       "is_spawnable": false,
       "is_summonable": false,
-      "is_experimental": false
+      "is_experimental": false,
+      "scripts":{
+        "animate":[
+          "reload_revolver",
+          "scope_revolver",
+          "reload_assult",
+          "scope_assult",
+          "reload_shotgun",
+          "scope_shotgun",
+          "reload_sniper",
+          "scope_sniper",
+          "reload_smg",
+          "scope_smg",
+
+          "charging"
+        ]
+      },
+      "animations":{
+        "add_reloading":"animation.add_reloading",
+        "reload_revolver":"controller.animation.reload_revolver",
+        "scope_revolver":"controller.animation.scope_revolver",
+        "add_scope_revolver":"animation.add_scope_revolver",
+        "reload_assult":"controller.animation.reload_assult",
+        "scope_assult":"controller.animation.scope_assult",
+        "add_scope_assult":"animation.add_scope_assult",
+        "reload_shotgun":"controller.animation.reload_shotgun",
+        "scope_shotgun":"controller.animation.scope_shotgun",
+        "add_scope_shotgun":"animation.add_scope_shotgun",
+        "reload_smg":"controller.animation.reload_smg",
+        "scope_smg":"controller.animation.scope_smg",
+        "add_scope_smg":"animation.add_scope_smg",
+        "reload_sniper":"controller.animation.reload_sniper",
+        "scope_sniper":"controller.animation.scope_sniper",
+        "add_scope_sniper":"animation.add_scope_sniper",
+        
+        "charging":"controller.animation.charging",
+        "charge":"animation.charge"
+      }
     },
 
     "component_groups": {
@@ -52,6 +89,42 @@
             "single_use":true,
             "num_to_spawn":1,
             "spawn_entity":"altivelis:revolver_bullet"
+          }
+        }
+      },
+      "shoot_revolver":{
+        "minecraft:spawn_entity":{
+          "entities":{
+            "min_wait_time":0,
+            "max_wait_time":0,
+            "single_use":true,
+            "num_to_spawn":1,
+            "spawn_entity":"altivelis:revolver_bullet",
+            "spawn_event":"minecraft:entity_spawned"
+          }
+        }
+      },
+      "shoot_assult":{
+        "minecraft:spawn_entity":{
+          "entities":{
+            "min_wait_time":0,
+            "max_wait_time":0,
+            "single_use":true,
+            "num_to_spawn":1,
+            "spawn_entity":"altivelis:assult_bullet",
+            "spawn_event":"minecraft:entity_spawned"
+          }
+        }
+      },
+      "shoot_shotgun":{
+        "minecraft:spawn_entity":{
+          "entities":{
+            "min_wait_time":0,
+            "max_wait_time":0,
+            "single_use":true,
+            "num_to_spawn":15,
+            "spawn_entity":"altivelis:shotgun_bullet",
+            "spawn_event":"minecraft:entity_spawned"
           }
         }
       }
@@ -216,6 +289,27 @@
         "add":{
           "component_groups":[
             "test"
+          ]
+        }
+      },
+      "shoot_revolver":{
+        "add":{
+          "component_groups":[
+            "shoot_revolver"
+          ]
+        }
+      },
+      "shoot_assult":{
+        "add":{
+          "component_groups":[
+            "shoot_assult"
+          ]
+        }
+      },
+      "shoot_shotgun":{
+        "add":{
+          "component_groups":[
+            "shoot_shotgun"
           ]
         }
       }

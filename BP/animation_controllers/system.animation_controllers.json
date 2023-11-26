@@ -1,0 +1,28 @@
+{
+    "format_version":"1.10.0",
+    "animation_controllers":{
+        "controller.animation.charging":{
+            "initial_state":"default",
+            "states":{
+                "default":{
+                    "transitions":[
+                        {"charged":"query.main_hand_item_use_duration"}
+                    ]
+                },
+                "charged":{
+                    "on_entry":[
+                        "/tag @s add charging"
+                    ],
+                    "transitions":[
+                        {"default":"!query.main_hand_item_use_duration"}
+                    ],
+                    "on_exit":[
+                        "/tag @s remove charging",
+                        "/tag @s remove charged",
+                        "/scoreboard players reset @s charge"
+                    ]
+                }
+            }
+        }
+    }
+}

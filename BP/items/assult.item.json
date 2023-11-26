@@ -1,5 +1,5 @@
 {
-    "format_version": "1.18.0",
+    "format_version": "1.19.60",
     "minecraft:item": {
       "description": {
         "identifier": "altivelis:assult",
@@ -20,17 +20,11 @@
             "max":0
           }
         },
-        "minecraft:use_duration":0.05,
-        "minecraft:cooldown":{
-          "category":"assult",
-          "duration":0.2
+        "minecraft:use_duration":99999,
+        "minecraft:chargeable":{
+          "movement_modifier":5.0
         },
-        "minecraft:on_use":{
-          "on_use":{
-            "event":"use",
-            "target":"self"
-          }
-        },
+        "minecraft:use_animation":"bow",
         "minecraft:hand_equipped":true,
         "minecraft:weapon":{}
       },
@@ -69,7 +63,10 @@
             },
             {
               "run_command":{
-                "command":"camerashake add @s 1.5 0.1 positional",
+                "command":[
+                  "camerashake add @s 1.5 0.1 positional",
+                  "scriptevent altivelis:ammo shoot"
+                ],
                 "target":"holder"
               }
             }  
@@ -79,7 +76,10 @@
           "sequence":[
             {
               "run_command":{
-                "command":"playsound random.click @s ~~~ 1 0.8 1",
+                "command":[
+                  "playsound random.click @s ~~~ 1 0.8 1",
+                  "scriptevent altivelis:ammo"
+                ],
                 "target":"holder"
               }
             }

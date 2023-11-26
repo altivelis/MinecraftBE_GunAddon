@@ -1,0 +1,83 @@
+{
+    "format_version":"1.10.0",
+    "animation_controllers":{
+        "controller.animation.reload_shotgun":{
+            "initial_state":"default",
+            "states":{
+                "default":{
+                    "on_entry":[
+                        "/scoreboard players set @s reloading 0",
+                        "/effect @s slowness 0 0 true"
+                    ],
+                    "transitions":[
+                        {"equip":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:shotgun')"}
+                    ]
+                },
+                "equip":{
+                    "on_entry":[
+                        "/scriptevent altivelis:ammo"
+                    ],
+                    "transitions":[
+                        {"default":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:shotgun')==0"},
+                        {"reloading":"variable.attack_time && query.scoreboard('ammo')>0 && query.cooldown_time_remaining('slot.weapon.mainhand',0)==0"}
+                    ]
+                },
+                "reloading":{
+                    "on_entry":[
+                        "/titleraw @s title {\"rawtext\":[{\"text\":\"\n\n\n\n\n\n§a--RELOADING--\"}]}",
+                        "/scoreboard players set @s reloading 1",
+                        "/playsound random.door_open @a ~~~ 1 1.7 0"
+                    ],
+                    "animations":[
+                        "add_reloading"
+                    ],
+                    "transitions":[
+                        {"canceled":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:shotgun')==0.0"},
+                        {"complete":"query.scoreboard('ammo')==0"}
+                    ],
+                    "on_exit":[
+                        "/scoreboard players reset @s reload"
+                    ]
+                },
+                "canceled":{
+                    "on_entry":[
+                        "/scriptevent altivelis:ammo"
+                    ],
+                    "transitions":[
+                        {"default":"true"}
+                    ]
+                },
+                "complete":{
+                    "on_entry":[
+                        "/scriptevent altivelis:ammo",
+                        "/playsound random.door_open @a ~~~ 1 1.5 0"
+                    ],
+                    "transitions":[
+                        {"default":"true"}
+                    ]
+                }
+            }
+        },
+        "controller.animation.scope_shotgun":{
+            "initial_state":"default",
+            "states":{
+                "default":{
+                    "transitions":[
+                        {"scope":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:shotgun') && query.is_sneaking"}
+                    ]
+                },
+                "scope":{
+                    "animations":[
+                        "add_scope_shotgun"
+                    ],
+                    "transitions":[
+                        {"default":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:shotgun')==0 || query.is_sneaking==0"}
+                    ],
+                    "on_exit":[
+                        "/effect @s slowness 0 0 true"
+                    ]
+                }
+            }
+        }
+    }
+}

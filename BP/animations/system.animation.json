@@ -1,0 +1,15 @@
+{
+    "format_version":"1.8.0",
+    "animations":{
+        "animation.charge":{
+            "animation_length":0.05,
+            "loop":true,
+            "timeline":{
+                "0.0":[
+                    "/scoreboard players add @s charge 1",
+                    "/tag @s[hasitem={item=altivelis:sniper,location=slot.weapon.mainhand,slot=0},scores={charge=10}] add charged"
+                ]
+            }
+        }
+    }
+}

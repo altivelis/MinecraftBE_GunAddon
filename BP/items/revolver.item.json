@@ -62,14 +62,17 @@
             }
           },
           {
-            "shoot":{
-              "projectile":"altivelis:revolver_bullet",
-              "launch_power":1.0
+            "trigger":{
+              "event":"shoot_revolver",
+              "target":"holder"
             }
           },
           {
             "run_command":{
-              "command":"camerashake add @s 2 0.1 positional",
+              "command":[
+                "camerashake add @s 2 0.1 positional",
+                "scriptevent altivelis:ammo shoot"
+              ],
               "target":"holder"
             }
           }
@@ -79,7 +82,10 @@
         "sequence":[
           {
             "run_command":{
-              "command":"playsound random.click @s ~~~ 2 2 1",
+              "command":[
+                "playsound random.click @s ~~~ 2 2 1",
+                "scriptevent altivelis:ammo"
+              ],
               "target":"holder"
             }
           }

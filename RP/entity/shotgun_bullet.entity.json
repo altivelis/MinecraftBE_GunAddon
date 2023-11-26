@@ -5,7 +5,7 @@
             "identifier": "altivelis:shotgun_bullet",
             "materials":{"default":"entity_emissive_alpha"},
             "textures":{
-                "default":"textures/guns/shotgun_bullet"
+                "default":"textures/guns/revolver_bullet"
             },
             "geometry": {
                 "default":"geometry.item_sprite"

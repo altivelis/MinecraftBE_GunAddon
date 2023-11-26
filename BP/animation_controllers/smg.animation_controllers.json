@@ -1,0 +1,74 @@
+{
+    "format_version":"1.10.0",
+    "animation_controllers":{
+        "controller.animation.reload_smg":{
+            "initial_state":"default",
+            "states":{
+                "default":{
+                    "on_entry":[
+                        "/scoreboard players set @s reloading 0",
+                        "/effect @s slowness 0 0 true"
+                    ],
+                    "transitions":[
+                        {"reloading":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:smg') && variable.attack_time && query.scoreboard('ammo')>0"}
+                    ]
+                },
+                "reloading":{
+                    "on_entry":[
+                        "/title @s actionbar §a--RELOADING--",
+                        "/scoreboard players set @s reloading 1",
+                        "/playsound camera.take_picture @a ~~~ 1 1.8 0"
+                    ],
+                    "animations":[
+                        "add_reloading"
+                    ],
+                    "transitions":[
+                        {"canceled":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:smg')==0.0"},
+                        {"complete":"query.scoreboard('reload')>=45"}
+                    ],
+                    "on_exit":[
+                        "/scoreboard players reset @s reload"
+                    ]
+                },
+                "canceled":{
+                    "on_entry":[
+                        "/title @s actionbar §2--中断しました--"
+                    ],
+                    "transitions":[
+                        {"default":"true"}
+                    ]
+                },
+                "complete":{
+                    "on_entry":[
+                        "@s reload_smg",
+                        "/playsound random.door_open @a ~~~ 1 2 0"
+                    ],
+                    "transitions":[
+                        {"default":"true"}
+                    ]
+                }
+            }
+        },
+        "controller.animation.scope_smg":{
+            "initial_state":"default",
+            "states":{
+                "default":{
+                    "transitions":[
+                        {"scope":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:smg') && query.is_sneaking"}
+                    ]
+                },
+                "scope":{
+                    "animations":[
+                        "add_scope_smg"
+                    ],
+                    "transitions":[
+                        {"default":"query.is_item_name_any('slot.weapon.mainhand',0,'altivelis:smg')==0 || query.is_sneaking==0"}
+                    ],
+                    "on_exit":[
+                        "/effect @s slowness 0 0 true"
+                    ]
+                }
+            }
+        }
+    }
+}

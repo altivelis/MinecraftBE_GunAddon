@@ -1,0 +1,63 @@
+{
+    "format_version":"1.8.0",
+    "animations":{
+        "animation.add_reloading":{
+            "animation_length":0.05,
+            "loop":true,
+            "timeline":{
+                "0.0":[
+                    //"/scoreboard players add @s reload 1",
+                    "/effect @s slowness 1 1 true",
+                    "/playsound camera.take_picture @s[hasitem={item=altivelis:assult,location=slot.weapon.mainhand,slot=0},scores={reload=40}] ~~~ 1 1.2 0"
+                ]
+            }
+        },
+        "animation.add_scope_revolver":{
+            "animation_length":0.05,
+            "loop":true,
+            "timeline":{
+                "0.0":[
+                    "/effect @s slowness 1 4 true"
+                ]
+            }
+        },
+        "animation.add_scope_assult":{
+            "animation_length":0.05,
+            "loop":true,
+            "timeline":{
+                "0.0":[
+                    "/effect @s slowness 1 3 true"
+                ]
+            }
+        },
+        "animation.add_scope_shotgun":{
+            "animation_length":0.05,
+            "loop":true,
+            "timeline":{
+                "0.0":[
+                    "/effect @s slowness 1 2 true"
+                ]
+            }
+        },
+        "animation.add_scope_smg":{
+            "animation_length":0.05,
+            "loop":true,
+            "timeline":{
+                "0.0":[
+                    "/effect @s slowness 1 2 true"
+                ]
+            }
+        },
+        "animation.add_scope_sniper":{
+            "animation_length":0.05,
+            "loop":true,
+            "timeline":{
+                "0.0":[
+                    "/effect @s slowness 1 9 true",
+                    "/scoreboard players add @s sn_scope 1",
+                    "/tag @s[scores={sn_scope=5}] add sn_scope"
+                ]
+            }
+        }
+    }
+}
