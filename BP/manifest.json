@@ -7,12 +7,12 @@
 		"version": [
 			1,
 			0,
-			1
+			2
 		],
 		"min_engine_version": [
 			1,
-			19,
-			60
+			20,
+			50
 		]
 	},
 	"modules": [
@@ -38,22 +38,17 @@
 	"dependencies": [
 		{
 			"module_name": "@minecraft/server",
-			"version": "1.1.0-beta"
+			"version": "1.8.0-beta"
 		},
 		{
 			"module_name": "@minecraft/server-ui",
-			"version": "1.0.0-beta"
+			"version": "1.2.0-beta"
 		}
 	],
 	"metadata": {
 		"authors": [
 			"altivelis"
 		],
-		"license": "紹介や改造などする場合は以下のダウンロードURLを記載してください。",
-		"generated_with": {
-			"bridge": [
-				"1.8.4"
-			]
-		}
+		"license": "紹介や改造などする場合は以下のダウンロードURLを記載してください。"
 	}
 }

@@ -8,7 +8,7 @@ import {
  * @returns 
  */
 export function runCommand(command){
-    return world.getDimension("overworld").runCommandAsync(command);
+    return world.getDimension("overworld").runCommand(command);
 }
 
 /**
@@ -18,7 +18,7 @@ export function runCommand(command){
  * @param {string} command
  */
 export function runWorld(dimension,command){
-    return world.getDimension(dimension).runCommandAsync(command);
+    return world.getDimension(dimension).runCommand(command);
 }
 
 /**
@@ -28,5 +28,5 @@ export function runWorld(dimension,command){
  * @param {string} command 
  */
 export function runPlayer(target,command){
-    return target.runCommandAsync(command);
+    return target.runCommand(command);
 }

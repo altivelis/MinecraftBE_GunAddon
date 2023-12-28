@@ -9,25 +9,25 @@ mc.system.runInterval(()=>{
     if(!player?.recall){
       player.recall = new Array();
     }
-    if(player.recall.length==50){
+    if(player.recall.length==25){
       player.recall.shift();
     }
     let pos = player.location;
     let rot = player.getRotation();
-    let health = player.getComponent("health").current;
+    let health = player.getComponent(mc.EntityHealthComponent.componentId).currentValue;
     player.recall.push({pos:pos,dim:player.dimension,rx:rot.x,ry:rot.y,hp:health});
   }
-},2);
+},4);
 
-mc.world.events.itemUse.subscribe(data=>{
-  const {item, source:player} = data;
+mc.world.afterEvents.itemUse.subscribe(data=>{
+  const {itemStack:item, source:player} = data;
   if(item.typeId!="altivelis:recall") return;
   if(player.getItemCooldown("recall")>0) return;
   player.addTag("recall");
   //item.getComponent("cooldown").startCooldown(player);
   player.startItemCooldown("recall",200);
-  player.addEffect(mc.MinecraftEffectTypes.invisibility,50,0,false);
-  player.addEffect(mc.MinecraftEffectTypes.resistance,50,100,false);
+  player.addEffect(mc.EffectTypes.get("invisibility"),50,{amplifier:0,showParticles:false});
+  player.addEffect(mc.EffectTypes.get("resistance"),50,{amplifier:100,showParticles:false});
   console.log(player.recall);
   runPlayer(player,"particle minecraft:egg_destroy_emitter ~ ~ ~");
 });
@@ -42,7 +42,7 @@ mc.system.runInterval(()=>{
       player.removeTag("recall");
       continue;
     }
-    player.teleport(recall.pos,recall.dim,recall.rx,recall.ry);
-    player.getComponent("health").setCurrent(recall.hp);
+    player.teleport(recall.pos,{dimension:recall.dim,rotation:{x:recall.rx,y:recall.ry}});
+    player.getComponent(mc.EntityHealthComponent.componentId).setCurrentValue(recall.hp);
   }
 })
